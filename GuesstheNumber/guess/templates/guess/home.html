@@ -1,0 +1,42 @@
+<head>
+<meta charset="UTF-8">
+<title>User Information Form</title>
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+</head>
+<body >
+
+<h5>Guess a number between 1 to 100</h5>
+<form class="was-validated" action="" method="POST">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="Submit" name="submit" value="Submit"  class="btn btn-info"/>
+</form>
+
+
+{% if submitbutton == "Submit" %}
+
+    <h3 style="color: blue"> Your guess is : {{ number }}</h3>
+
+    {% if data == 'equal' %}
+        <h3 style="color: green">!!!!congrats your guess is correct!!!!! </h3>
+
+        <h3>Random number is :{{ rand }}</h3>
+
+    {% else %}
+        <h3 style="color: red">***sorry your guess is wrong**** </h3>
+        <h4 > your guess is {{ data }} than the random number</h4>
+        <h3 >Random number is :{{ rand }}</h3>
+        <h3> diffrence between random number and your guess is :{{ diff }}</h3>
+
+    {% endif %}
+
+
+
+{% endif %}
+
+</body>
+</html>
+
